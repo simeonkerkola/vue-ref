@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hi VUE</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="row">
+      <input type="number" v-model.number="num1" @change="add"></input>
+      <span>+</span>
+      <input type="number" v-model.number="num2" @change="add"></input>
+      <span>=</span>
+      <span>{{result}}</span>
+    </div>
+    <div class="row second">
+      <select name="tacos" id="tacos" v-model="name">
+        <option v-for="taco in tacos">{{taco}}</option>
+      </select>
+
+      <p v-if="name">My favorite kind of taco is {{name}}</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="script.js">
+  </script>
+</body>
+
+</html>
