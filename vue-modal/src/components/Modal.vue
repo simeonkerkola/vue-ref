@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>I'm Here!</h2>
+  <div class="modal">
+    <h2>I'm Modal</h2>
     <slot />
   </div>
 </template>

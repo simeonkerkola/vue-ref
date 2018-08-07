@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div :class="[isShowing ? blurClass : '', bkClass]">
-      <h3>trigger the Modal!</h3>
+      <h2>trigger the Modal!</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem facilis 
         recusandae id, aperiam delectus enim! Deleniti, qui. Quidem possimus 
@@ -16,32 +16,39 @@
     <transition name="fade">
       <Modal 
         v-if="isShowing" 
-        class="modal"
       >
         <button @click="toggleShow">Close</button>
       </Modal>
     </transition>
+    <br>
+    <br>
+    <br>
+    <div :class="[isShowing ? blurClass : '', bkClass]">
+      <Tooltip>
+        <span slot="tooltip-text">Hover me</span>
+        <p slot="tooltip-tip">I'm the tip!</p>
+      </Tooltip>
+    </div>
   </div>
 </template>
 
 <script>
 import Modal from './components/Modal.vue';
+import Tooltip from './components/Tooltip.vue';
+
+import { toggle } from './components/mixins/toggle';
 export default {
   name: 'App',
   components: {
-    Modal
+    Modal,
+    Tooltip
   },
+  mixins: [toggle],
   data() {
     return {
-      isShowing: false,
       bkClass: 'bk',
       blurClass: 'blur'
     };
-  },
-  methods: {
-    toggleShow() {
-      this.isShowing = !this.isShowing;
-    }
   }
 };
 </script>
