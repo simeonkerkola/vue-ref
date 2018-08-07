@@ -14,24 +14,24 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
-        cart : ''
+        cart: ''
       }
-    },
+    }
   }
 </script>
 
 <style scoped>
-  .cartunit {
-    padding-top: 120px;
-    width: 600px;
-    padding: 120px 0 40px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+.cartunit {
+  padding-top: 120px;
+  width: 600px;
+  padding: 120px 0 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  h2 {
-    margin-bottom: 40px;
-  }
+h2 {
+  margin-bottom: 40px;
+}
 </style>
