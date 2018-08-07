@@ -11,14 +11,20 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif' }
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Montserrat|PT+Serif'
+      }
     ]
   },
+  // Customize loading bar:
+  // loading: { color: '#bada55' },
   loading: false,
+
   /*
   ** Build configuration
   */
   build: {
     // build code goes here, such as eslint etc
   }
-}
+};

@@ -16,7 +16,8 @@
 </script>
 
 <style>
-body, html {
+body,
+html {
   font-family: 'PT Serif', serif;
   margin: 0;
 }
@@ -24,7 +25,7 @@ body, html {
 a {
   transition: 0.2s all ease;
   text-decoration: none;
-  color: #E6534B;
+  color: #e6534b;
 }
 
 a:hover {
@@ -37,11 +38,17 @@ a:hover {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.special, h1, h2, h3, li, button.submit, .quant-text {
+.special,
+h1,
+h2,
+h3,
+li,
+button.submit,
+.quant-text {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -112,19 +119,19 @@ button.submit:hover {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   width: 280px;
   height: 440px;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   background: #eee;
   padding: 20px 10px;
   margin: 30px;
 }
 .item img {
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  -ms-grid-row-align: center;
+  align-self: center;
 }
 </style>
