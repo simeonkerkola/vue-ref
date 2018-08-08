@@ -1,10 +1,17 @@
 <template>
   <div id="app">
     <small>Your place here: </small>
-    <input v-model="num">
+    <input 
+      v-model.number="num" 
+      type="number"
+      min="1"
+      max="10"
+      step="1">
     <div class="won">
       <h2>Congratulations!</h2>
-      <p v-if="num"> You won <span>{{ num | place }}</span> place!</p>
+      <p 
+        v-color="'red'" 
+        v-if="num"> You won <span>{{ num | place }}</span> place!</p>
     </div>
   </div>
 </template>
@@ -18,6 +25,11 @@ export default {
       else if (value == 2) return `${value}nd`;
       else if (value == 3) return `${value}rd`;
       return `${value}th`;
+    }
+  },
+  directives: {
+    color: function(el, binding) {
+      el.style.color = binding.value;
     }
   },
   data() {
