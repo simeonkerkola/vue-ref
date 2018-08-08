@@ -1,71 +1,138 @@
 <template>
   <div id="app">
-    <small>Your place here: </small>
-    <input 
-      v-model.number="num" 
-      type="number"
-      min="1"
-      max="10"
-      step="1">
-    <div class="won">
-      <h2>Congratulations!</h2>
-      <p 
-        v-color="'red'" 
-        v-if="num"> You won <span>{{ num | place }}</span> place!</p>
+    <img 
+      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-post-photo.jpg" 
+      class="main-photo">
+    <img 
+      src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/vue-main-profile.jpg" 
+      class="main-profile">
+    <div class="main-info">
+      <span class="name">Julianne Delfina</span> 
+      <h3>"It's lovely after it rains"</h3>
     </div>
+    <hr>
+    <ul>
+      <li
+        is="individual-comment"
+        v-for="comment in comments"
+        :commentpost="comment"
+        :key="comment.text"
+      />
+    </ul>
+    <input
+      v-model="newComment"
+      placeholder="Add a comment"
+      @keyup.enter="addComment"
+    >
   </div>
 </template>
 
 <script>
+import IndividualComment from './components/IndividualComment.vue';
 export default {
   name: 'App',
-  filters: {
-    place: function(value) {
-      if (value == 1) return `${value}st`;
-      else if (value == 2) return `${value}nd`;
-      else if (value == 3) return `${value}rd`;
-      return `${value}th`;
-    }
-  },
-  directives: {
-    color: function(el, binding) {
-      el.style.color = binding.value;
-    }
+  components: {
+    IndividualComment
   },
   data() {
     return {
-      num: 2
+      newComment: '',
+      comments: []
     };
+  },
+  methods: {
+    addComment: function() {
+      const newCommentObj = {
+        text: this.newComment,
+        author: 'Magoo',
+        authorImg:
+          'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-skull.jpg'
+      };
+      this.comments.push(newCommentObj);
+      this.newComment = '';
+    }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 body {
-  font-family: sans-serif;
+  font-family: 'Playfair Display', serif;
+  background: #888;
 }
-
 #app {
+  background: #212222;
+  color: #fff;
+  letter-spacing: 0.04em;
   text-align: center;
-  max-width: 420px;
-  margin: 50px auto;
+  margin: 60px;
+  width: 370px;
+  margin: 0 auto;
   display: table;
-  padding: 10px 40px;
-  border: 1px solid black;
+  padding: 20px;
+  line-height: 1.4em;
 }
-
-h2 {
-  border-bottom: 1px solid #ed9909;
+.name {
+  color: #ccc;
 }
-
-span {
-  font-size: 40px;
+small {
+  color: #bbb;
+  font-size: 10px;
 }
-
-.won {
-  background: #ffc968;
+h3 {
+  margin: 5px 0 4px;
+}
+.main-photo {
+  width: 300px;
+}
+.main-profile {
+  float: left;
+  border: 3px solid white;
+  margin: -25px 0 0 20px;
+  position: relative;
+  width: 80px;
+}
+.main-info {
+  float: left;
   padding: 10px 20px;
-  border-radius: 3px;
-  margin: 10px;
+  text-align: left;
+  margin-bottom: 15px;
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+li {
+  list-style: none outside none;
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid #555;
+}
+ul {
+  margin: 0;
+  padding: 0 35px;
+}
+hr {
+  margin: 25px 0 0 32px;
+  width: 300px;
+  border-top: 0;
+  border-bottom: 1px solid #555;
+}
+input {
+  font-family: 'Playfair Display', serif;
+  width: 280px;
+  margin: 30px 0;
+  padding: 8px 10px;
+  outline: 0;
+}
+.post-img {
+  border: 3px solid white;
+  float: left;
+  margin: 0 15px 0 -2px;
+  transition: 0.3s all ease;
+}
+.post-comment {
+  margin: 0 0 5px 0;
 }
 </style>
