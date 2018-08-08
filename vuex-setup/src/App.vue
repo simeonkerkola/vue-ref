@@ -36,19 +36,17 @@ export default {
   },
   data() {
     return {
-      newComment: '',
-      comments: []
+      newComment: ''
     };
+  },
+  computed: {
+    comments() {
+      return this.$store.getters.getComments;
+    }
   },
   methods: {
     addComment: function() {
-      const newCommentObj = {
-        text: this.newComment,
-        author: 'Magoo',
-        authorImg:
-          'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-skull.jpg'
-      };
-      this.comments.push(newCommentObj);
+      this.$store.commit('addComment', this.newComment);
       this.newComment = '';
     }
   }
@@ -57,7 +55,7 @@ export default {
 
 <style lang="scss">
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: sans-serif;
   background: #888;
 }
 #app {
@@ -120,7 +118,7 @@ hr {
   border-bottom: 1px solid #555;
 }
 input {
-  font-family: 'Playfair Display', serif;
+  font-family: sans-serif;
   width: 280px;
   margin: 30px 0;
   padding: 8px 10px;

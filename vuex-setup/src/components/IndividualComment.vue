@@ -1,9 +1,11 @@
 <template>
   <div>
     <li> 
-      <img :src="commentpost.authorImg" class="post-img" > 
+      <img 
+        :src="commentpost.authorImg" 
+        class="post-img"> 
       <small>{{ commentpost.author }}</small>
-      <p class="post-comment">"{{ commentpost.text }}"</p>
+      <p class="post-comment">{{ commentpost.text }}</p>
     </li>
   </div>
 </template>

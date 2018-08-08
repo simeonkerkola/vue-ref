@@ -28,14 +28,20 @@ export const store = new Vuex.Store({
   },
   // Showing things, not mutating state
   getters: {
-    trippleCounter: state => {
-      return state.counter * 3;
+    getComments: state => {
+      return state.comments;
     }
   },
   // mutations are always synchronous
   mutations: {
-    increment: (state, num) => {
-      state.counter += num;
+    addComment: (state, comment) => {
+      const newCommentObj = {
+        text: comment,
+        author: 'Magoo',
+        authorImg:
+          'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/v-skull.jpg'
+      };
+      state.comments.push(newCommentObj);
     }
   }
 });
