@@ -3,23 +3,29 @@
     <div class="cartunit">
       <h2>Your cart</h2>
       <p>Thank you for shopping with us.</p>
-      <div v-if="cart"></div>
+      <div v-if="cart" />
       <div v-else>
-        <p>Your cart is empty, why not <nuxt-link exact to="/" class="logo">fill it up with something?</nuxt-link></p>
+        <p>Your cart is empty, why not 
+          <nuxt-link 
+            exact 
+            to="/" 
+            class="logo">fill it up with something?
+          </nuxt-link>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 
-<script> 
-  export default {
-    data () {
-      return {
-        cart: ''
-      }
-    }
+<script>
+export default {
+  data() {
+    return {
+      cart: ''
+    };
   }
+};
 </script>
 
 <style scoped>

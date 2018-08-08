@@ -1,15 +1,20 @@
 <template>
   <section class="container">
     <div class="flexrow">
-      <div class="unit" v-for="unit in manifest">
-        <child :item="unit.item" :url="unit.url"></child>
+      <div 
+        v-for="unit in manifest" 
+        :key="unit.name"
+        class="unit">
+        <child 
+          :item="unit.item" 
+          :url="unit.url" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Child from '~/components/Child.vue'
+import Child from '~/components/Child.vue';
 
 export default {
   components: {
@@ -19,21 +24,22 @@ export default {
     return {
       manifest: [
         {
-          item: "backpack",
-          url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/backpack.jpg"
+          item: 'backpack',
+          url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/backpack.jpg'
         },
         {
-          item: "tshirt",
-          url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/tshirt.jpg"
+          item: 'tshirt',
+          url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/tshirt.jpg'
         },
-         {
-          item: "sweatshirt",
-          url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/sweatshirt.jpg"
-        },
+        {
+          item: 'sweatshirt',
+          url:
+            'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/sweatshirt.jpg'
+        }
       ]
     };
   }
-}
+};
 </script>
 
 <style>
