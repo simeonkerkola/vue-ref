@@ -2,8 +2,15 @@
   <div>
     <div class="cartunit">
       <h2>Your cart</h2>
-      <p>Thank you for shopping with us.</p>
-      <div v-if="cart" />
+      <div v-if="cart.length">
+        <ul>
+          <li 
+            v-for="item in cart" 
+            :key="item.item">
+            {{ item.item }} {{ item.quantity }}
+          </li>
+        </ul>
+      </div>
       <div v-else>
         <p>Your cart is empty, why not 
           <nuxt-link 
@@ -19,11 +26,15 @@
 
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  data() {
-    return {
-      cart: ''
-    };
+  computed: {
+    cart() {
+      console.log('cart', this.$store.getters.cartItems);
+
+      return this.$store.getters.cartItems;
+    }
   }
 };
 </script>

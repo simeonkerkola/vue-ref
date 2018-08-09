@@ -15,34 +15,22 @@
 
 <script>
 import Child from '~/components/Child.vue';
+import { mapState } from 'vuex';
 
 export default {
   components: {
     Child
   },
-  data() {
-    return {
-      manifest: [
-        {
-          item: 'backpack',
-          url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/backpack.jpg'
-        },
-        {
-          item: 'tshirt',
-          url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/tshirt.jpg'
-        },
-        {
-          item: 'sweatshirt',
-          url:
-            'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/sweatshirt.jpg'
-        }
-      ]
-    };
-  }
+  computed: mapState({
+    manifest: state => state.manifest
+  })
 };
 </script>
 
 <style>
+.container {
+}
+
 /* Page transition ANIMATION  */
 .page-enter-active {
   animation: acrossIn 0.4s ease-out both;

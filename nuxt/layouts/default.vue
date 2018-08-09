@@ -1,24 +1,27 @@
 <template>
-  <div>
+  <div class="page">
     <MainMenu />
-    <nuxt/>
+    <nuxt />
+    <Snackbar />
   </div>
 </template>
 
 <script>
-  import MainMenu from './../components/MainMenu.vue'
-  
-  export default {
-    components: {
-      MainMenu
-    }
+import MainMenu from './../components/MainMenu.vue';
+import Snackbar from './../components/Snackbar';
+
+export default {
+  components: {
+    MainMenu,
+    Snackbar
   }
+};
 </script>
 
 <style>
 body,
 html {
-  font-family: 'PT Serif', serif;
+  font-family: sans-serif;
   margin: 0;
 }
 
@@ -30,6 +33,10 @@ a {
 
 a:hover {
   color: #fc7c5f;
+}
+
+.page {
+  height: 100vh;
 }
 
 .flexrow {
@@ -63,7 +70,6 @@ h2 {
 
 li {
   list-style: none;
-  display: inline-block;
 }
 
 input {
