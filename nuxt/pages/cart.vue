@@ -1,31 +1,38 @@
 <template>
-  <div>
-    <div class="cartunit">
-      <h2>Your cart</h2>
-      <div v-if="cart.length" class="cart-content">
-        <ul class="cart-list">
-          <li 
-            class="cart-list__item"
-            v-for="item in cart" 
-            :key="item.item">
-            {{ item.item }} {{ item.quantity }} {{item.price}}€
-          </li>
-          <li class="cart-list__item--total">Cart total: {{total}}</li>
-        </ul>
-        <button class="btn btn-checkout">
-          Checkout
-        </button>
-      </div>
-      <div v-else>
-        <p>Your cart is empty, why not 
-          <nuxt-link 
-            exact 
-            to="/" 
-            class="logo">fill it up with something?
-          </nuxt-link>
-        </p>
-      </div>
+  <div class="cartunit">
+    <h2>Your cart</h2>
+    <div 
+      v-if="cart.length" 
+      class="cart-content">
+      <ul class="cart-list">
+        <li class="cart-list__item cart-list__item--header">
+          <span>Item</span>
+          <span>Quantity</span>
+          <span>Price</span>
+        </li>
+        <li 
+          v-for="item in cart"
+          :key="item.item" 
+          class="cart-list__item">
+          <span>{{ item.item }}</span> <span>{{ item.quantity }}</span> <span>{{ item.price * item.quantity }}€</span>
+        </li>
+        <li class="cart-list__item--total">Cart total: {{ total }}</li>
+      </ul>
     </div>
+    <div v-else>
+      <p>Your cart is empty, why not 
+        <nuxt-link 
+          exact 
+          to="/" 
+          class="logo">fill it up with something?
+        </nuxt-link>
+      </p>
+    </div>
+    <button 
+      v-if="cart.length" 
+      class="btn btn-checkout">
+      Checkout
+    </button>
   </div>
 </template>
 
@@ -45,24 +52,24 @@ export default {
 };
 </script>
 
-<style scoped>
-.btn-checkout {
-  margin-top: 40px;
-  align-self: center
-}
-li {
-  list-style: none;
-}
+<style scoped lang="scss">
 .cart-list {
   display: flex;
   flex-direction: column;
+  padding: 0;
+}
+.cart-list__item--header {
+  color: #000;
+  font-weight: bold;
 }
 .cart-list__item {
-  
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 .cart-list__item--total {
   align-self: flex-end;
-  margin-top: 40px;
+  color: #000;
   font-weight: bold;
 }
 .cartunit {
@@ -72,12 +79,18 @@ li {
   max-width: 900px;
   margin: 0 auto;
 }
-.cart-content {
+.cartunit {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 h2 {
   margin-bottom: 40px;
+}
+
+.btn-checkout {
+  margin-top: auto;
+  align-self: center;
 }
 </style>

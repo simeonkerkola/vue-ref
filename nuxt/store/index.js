@@ -32,12 +32,18 @@ const createStore = () => {
       snackbar: { show: false, message: '' }
     },
     actions: {
-      addItemToCart({ state, commit }, item) {
+      addItemToCart({ state, commit }, product) {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            if (item.quantity > 0) {
-              commit('pushItemToCart', item);
-              resolve(item);
+            if (product.quantity > 0) {
+              const cartItem = state.cart.find(item => item.id === product.id);
+              console.log('item', cartItem);
+              if (cartItem) {
+                commit('incrementQuantity', cartItem);
+              } else {
+                commit('pushItemToCart', product);
+              }
+              resolve(product);
             } else reject('Quantity was 0');
           }, 500);
         });
@@ -60,8 +66,8 @@ const createStore = () => {
       }
     },
     mutations: {
-      pushItemToCart(state, { ...item }) {
-        state.cart.push({ ...item });
+      pushItemToCart(state, { ...product }) {
+        state.cart.push({ ...product });
       },
       showSnackbar(state, { message }) {
         state.snackbar.message = message;
@@ -69,6 +75,10 @@ const createStore = () => {
       },
       hideSnackbar(state) {
         state.snackbar.show = false;
+      },
+      incrementQuantity(state, { id, quantity }) {
+        const cartItem = state.cart.find(item => item.id === id);
+        cartItem.quantity += quantity;
       }
     }
   });

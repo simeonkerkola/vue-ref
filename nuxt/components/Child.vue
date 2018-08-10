@@ -17,7 +17,7 @@
       </div>
       <button 
         class="btn" 
-        @click="addItemToCart({item, quantity, price})">Submit</button>
+        @click="addItemToCart({item, id, quantity, price})">Submit</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
-  props: ['item', 'url', 'price'],
+  props: ['item', 'url', 'price', 'id'],
   data() {
     return {
       quantity: 0

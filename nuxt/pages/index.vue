@@ -8,7 +8,8 @@
         <child 
           :item="unit.item"
           :price="unit.price" 
-          :url="unit.url" />
+          :url="unit.url"
+          :id="unit.id" />
       </div>
     </div>
   </section>
@@ -29,8 +30,6 @@ export default {
 </script>
 
 <style>
-
-
 /* Page transition ANIMATION  */
 .page-enter-active {
   animation: acrossIn 0.4s ease-out both;
