@@ -8,15 +8,15 @@
         height="300">
       <div class="quantity">
         <button 
-          class="inc" 
+          class="btn-inc" 
           @click="quantity > 0 ? quantity -= 1 : 0">-</button>
         <span class="quant-text">Quantity: {{ quantity }}</span>
         <button 
-          class="inc" 
+          class="btn-inc" 
           @click="quantity += 1">+</button>
       </div>
       <button 
-        class="submit" 
+        class="btn" 
         @click="addItemToCart({item, quantity, price})">Submit</button>
     </div>
   </div>

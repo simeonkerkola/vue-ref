@@ -68,10 +68,6 @@ h2 {
   text-align: center;
 }
 
-li {
-  list-style: none;
-}
-
 input {
   background: #eee;
 }
@@ -83,11 +79,11 @@ button {
   outline: none;
   cursor: pointer;
 }
-button.inc {
+.btn-inc {
   background: white;
   color: black;
 }
-button.submit {
+.btn {
   background: black;
   color: white;
   margin-left: 20px;
@@ -96,7 +92,7 @@ button.submit {
   -webkit-transition: 0.25s all ease-in;
   transition: 0.25s all ease-in;
 }
-button.submit:hover {
+.btn:hover {
   opacity: 0.8;
   -webkit-transition: 0.25s all ease-out;
   transition: 0.25s all ease-out;
