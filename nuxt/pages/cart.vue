@@ -7,9 +7,10 @@
           <li 
             v-for="item in cart" 
             :key="item.item">
-            {{ item.item }} {{ item.quantity }}
+            {{ item.item }} {{ item.quantity }} {{item.price}}€
           </li>
         </ul>
+        <div>Cart total is: {{total}}</div>
       </div>
       <div v-else>
         <p>Your cart is empty, why not 
@@ -31,9 +32,10 @@ import { mapState } from 'vuex';
 export default {
   computed: {
     cart() {
-      console.log('cart', this.$store.getters.cartItems);
-
       return this.$store.getters.cartItems;
+    },
+    total() {
+      return this.$store.getters.cartTotal;
     }
   }
 };

@@ -6,7 +6,8 @@
         :key="unit.name"
         class="unit">
         <child 
-          :item="unit.item" 
+          :item="unit.item"
+          :price="unit.price" 
           :url="unit.url" />
       </div>
     </div>
@@ -28,8 +29,7 @@ export default {
 </script>
 
 <style>
-.container {
-}
+
 
 /* Page transition ANIMATION  */
 .page-enter-active {

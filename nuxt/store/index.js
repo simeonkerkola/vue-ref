@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { log } from 'util';
 
 Vue.use(Vuex);
 
@@ -9,16 +10,19 @@ const createStore = () => {
       manifest: [
         {
           id: 1,
+          price: 420,
           item: 'backpack',
           url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/backpack.jpg'
         },
         {
           id: 2,
+          price: 120,
           item: 'tshirt',
           url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/tshirt.jpg'
         },
         {
           id: 3,
+          price: 200,
           item: 'sweatshirt',
           url:
             'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/sweatshirt.jpg'
@@ -48,14 +52,16 @@ const createStore = () => {
     getters: {
       cartItems: state => {
         return state.cart;
+      },
+      cartTotal: state => {
+        const total = state.cart.reduce((a, b) => a + b.quantity * b.price, 0);
+        console.log('reduced', total);
+        return total;
       }
     },
     mutations: {
-      pushItemToCart(state, { item, quantity }) {
-        state.cart.push({
-          item,
-          quantity
-        });
+      pushItemToCart(state, { ...item }) {
+        state.cart.push({ ...item });
       },
       showSnackbar(state, { message }) {
         state.snackbar.message = message;

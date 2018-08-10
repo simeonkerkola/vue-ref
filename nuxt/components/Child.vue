@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="item">
-      <h2>{{ item }}</h2>
+      <h2 class="item-header"><span>{{ item }}</span> <span>{{ price }}€</span></h2>
       <img 
         :src="url" 
         width="235" 
@@ -17,7 +17,7 @@
       </div>
       <button 
         class="submit" 
-        @click="addItemToCart({item, quantity})">Submit</button>
+        @click="addItemToCart({item, quantity, price})">Submit</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
-  props: ['item', 'url'],
+  props: ['item', 'url', 'price'],
   data() {
     return {
       quantity: 0
@@ -36,7 +36,7 @@ export default {
     addItemToCart(item) {
       this.$store.dispatch('addItemToCart', item).then(() => {
         this.$store.dispatch('peekSnackbar', {
-          message: `item added to cart`
+          message: `item added to <a href="/cart">cart</a>`
         });
       });
     }
@@ -44,5 +44,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.item-header {
+  align-self: center;
+  display: flex;
+  width: 235px;
+  justify-content: space-between;
+}
 </style>

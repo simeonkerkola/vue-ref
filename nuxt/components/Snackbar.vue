@@ -5,7 +5,7 @@
         v-if="show" 
         class="snackbar">
         <div class="snackbar__text">
-          {{ message }}
+          <span v-html="message"></span>
         </div>
         <div class="snackbar__action">
           <button 
